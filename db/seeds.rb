@@ -27,6 +27,7 @@ Pothole.create!([
     description: 'A massive pothole causing traffic issues.',
     status: 'reported',
     user: user1
+    .background-image: url('https://res.cloudinary.com/dva1lf16l/image/upload/v1737483236/potholes-1_mxeo94.webp');
   },
   {
     address: '456 Elm St',
@@ -34,6 +35,7 @@ Pothole.create!([
     description: 'A medium-sized pothole near the curb.',
     status: 'in progress',
     user: user2
+    .background-image: url('')
   },
   {
     address: '789 Oak St',
@@ -41,6 +43,7 @@ Pothole.create!([
     description: 'A small but dangerous pothole in the middle of the road.',
     status: 'fixed',
     user: user1
+    .background-image: url('')
   },
   {
     address: '101 Pine St',
@@ -48,6 +51,6 @@ Pothole.create!([
     description: 'Deep pothole on a busy highway, hazardous for cars.',
     status: 'reported',
     user: user2
+    .background-image: url('')
   }
 ])
-
