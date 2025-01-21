@@ -50,4 +50,3 @@ Pothole.create!([
     user: user2
   }
 ])
-

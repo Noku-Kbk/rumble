@@ -1,4 +1,11 @@
+<h1>Pothole Details</h1>
 <%= @pothole.address %>
 <%= @pothole.size %>
 <%= @pothole.description %>
 <%= @pothole.status %>
+<%= link_to "Delete",
+  pothole_path(@pothole),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<%= link_to 'Edit', edit_pothole_path(@pothole), class: 'btn btn-warning' %>
+<%= link_to 'Back to List', potholes_path, class: 'btn btn-secondary' %>
