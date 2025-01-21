@@ -3,6 +3,10 @@ class PotholesController < ApplicationController
     @potholes = Pothole.all
   end
 
+  def show
+    @pothole = Pothole.find(params[:id])
+  end
+  
   def new
     @pothole = Pothole.new
   end
@@ -22,5 +26,4 @@ class PotholesController < ApplicationController
   def pothole_params
     params.require(:pothole).permit(:address, :size, :description, :status, :user_id)
   end
-
 end
