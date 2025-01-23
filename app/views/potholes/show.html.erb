@@ -1,4 +1,5 @@
-<h1>Pothole Details</h1>
+
+<%= cl_image_tag @pothole.photo.key, height: 200, width: 200, crop: :fill %>
 <%= @pothole.address %>
 <%= @pothole.size %>
 <%= @pothole.description %>

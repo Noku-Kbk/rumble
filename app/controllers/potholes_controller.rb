@@ -43,7 +43,7 @@ class PotholesController < ApplicationController
   private
 
   def pothole_params
-    params.require(:pothole).permit(:address, :size, :description, :status, :user_id)
+    params.require(:pothole).permit(:address, :size, :description, :status, :user_id, :photo)
   end
 
 end
