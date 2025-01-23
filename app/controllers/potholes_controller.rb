@@ -21,9 +21,29 @@ class PotholesController < ApplicationController
     end
   end
 
+  def update
+    @pothole = Pothole.find(params[:id])
+    if @pothole.update(pothole_params)
+      redirect_to @pothole, notice: 'Pothole was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @pothole = Pothole.find(params[:id])
+  end
+
+  def destroy
+    @pothole = Pothole.find(params[:id])
+    @pothole.destroy
+    redirect_to potholes_path, status: :see_other
+  end
+
   private
 
   def pothole_params
     params.require(:pothole).permit(:address, :size, :description, :status, :user_id, :photo)
   end
+
 end
