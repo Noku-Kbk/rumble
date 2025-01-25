@@ -25,7 +25,7 @@
 <ul>
   <% @pothole.comments.each do |comment| %>
     <li>
-      <strong><%= comment.user.name %>:</strong> <%= comment.content %>
+      <strong><%= comment.user.username %>:</strong> <%= comment.content %>
       <%= link_to "Delete", pothole_comment_path(@pothole, comment), method: :delete, data: { confirm: "Are you sure?" } %>
     </li>
   <% end %>
