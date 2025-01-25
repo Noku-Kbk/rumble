@@ -20,7 +20,6 @@ user2 = User.create!(
   email: 'jennifer.seqobane@gmail.com',
   password: 'password123'
 )
-
 # Create potholes
 Pothole.create!([
   {
@@ -52,3 +51,5 @@ Pothole.create!([
     user: user2
   }
 ])
+
+

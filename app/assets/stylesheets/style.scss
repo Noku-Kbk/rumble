@@ -1,0 +1,11 @@
+$base-font-size: 32px;
+
+body{
+  font-size: $base-font-size;
+  color: blue;
+
+  h1 {
+    font-size: $base-font-size * 2;
+    color: aqua;
+  }
+}
