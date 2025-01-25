@@ -14,11 +14,13 @@ Pothole.destroy_all
 # Create users
 user1 = User.create!(
   email: 'nokuthulakubk@gmail.com',
-  password: 'password456'
+  password: 'password456',
+  username: "Noks"
 )
 user2 = User.create!(
   email: 'jennifer.seqobane@gmail.com',
-  password: 'password123'
+  password: 'password123',
+  username: "Jen"
 )
 # Create potholes
 Pothole.create!([
@@ -51,5 +53,3 @@ Pothole.create!([
     user: user2
   }
 ])
-
-
