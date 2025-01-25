@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts 'Seeding users and potholes...'
+User.destroy_all
+Pothole.destroy_all
 
 # Create users
 user1 = User.create!(
@@ -22,28 +24,28 @@ user2 = User.create!(
 # Create potholes
 Pothole.create!([
   {
-    address: '123 Main St',
+    address: '22 Jesmond Road, Musgrave, Berea, Durban, South Africa',
     size: 'Large',
     description: 'A massive pothole causing traffic issues.',
     status: 'reported',
     user: user1
   },
   {
-    address: '456 Elm St',
+    address: '892 Umgeni Road, Morningside, Durban, South Africa',
     size: 'Medium',
     description: 'A medium-sized pothole near the curb.',
     status: 'in progress',
     user: user2
   },
   {
-    address: '789 Oak St',
+    address: '115 Musgrave road, Musgrave, Durban, South Africa',
     size: 'Small',
     description: 'A small but dangerous pothole in the middle of the road.',
     status: 'fixed',
     user: user1
   },
   {
-    address: '101 Pine St',
+    address: '67 Hillier Road, Umbilo, Berea, Durban, South Africa',
     size: 'Large',
     description: 'Deep pothole on a busy highway, hazardous for cars.',
     status: 'reported',
