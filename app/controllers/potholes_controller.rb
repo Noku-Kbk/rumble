@@ -1,6 +1,12 @@
 class PotholesController < ApplicationController
   def index
     @potholes = Pothole.all
+    @markers = @potholes.geocoded.map do |pothole|
+      {
+        lat: pothole.latitude,
+        lng: pothole.longitude
+      }
+    end
   end
 
   def show
