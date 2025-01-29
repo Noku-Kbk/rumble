@@ -4,7 +4,8 @@ class PotholesController < ApplicationController
     @markers = @potholes.geocoded.map do |pothole|
       {
         lat: pothole.latitude,
-        lng: pothole.longitude
+        lng: pothole.longitude,
+        info_window_html: render_to_string(partial: "pages/info_window", locals: {pothole: pothole})
       }
     end
   end
