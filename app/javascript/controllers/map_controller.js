@@ -98,28 +98,15 @@ export default class extends Controller {
         trackUserLocation: true
       })
     )
-
-    this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([marker.lng, marker.lat])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML(`
-              <h3>${marker.location}</h3>
-              <p>${marker.description}</p>
-              <a href="/potholes/${marker.id}">View Details</a>
-            `)
-        )
-        .addTo(this.map)
-    })
-
-
+    
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
       new mapboxgl.Marker()
         .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
         .addTo(this.map)
     })
   }

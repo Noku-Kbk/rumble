@@ -1,0 +1,6 @@
+<p><%= pothole.address %></p>
+<% if pothole.photo.key.present? %>
+<%= cl_image_tag pothole.photo.key, height: 200, width: 200, crop: :fill %>
+<% else %>
+<p>no image present</p>
+ <% end %>
