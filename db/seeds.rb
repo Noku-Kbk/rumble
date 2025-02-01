@@ -13,7 +13,9 @@ require "open-uri"
 puts 'Seeding users and potholes...'
 User.destroy_all
 Pothole.destroy_all
-
+Room.destroy_all
+puts("creating community room")
+Room.create(title: "Community")
 
 # Create users
 user1 = User.create!(
@@ -61,5 +63,3 @@ pothole = Pothole.new(address: '67 Hillier Road, Umbilo, Berea, Durban, South Af
   user: user1)
 pothole.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 pothole.save
-
-
