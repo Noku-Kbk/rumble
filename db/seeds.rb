@@ -1,6 +1,7 @@
 puts "start"
 User.destroy_all
 Pothole.destroy_all
+Room.destroy_all
 
 User.create!([
   { id: 20, name: "John Doe", email: "johndoe@example.com", password: "password" },
@@ -26,3 +27,6 @@ Pothole.create!([
   { id: 54, address: "99 Montclair Road, Montclair, Durban, South Africa", size: "Large", description: "Pothole forming near a bus stop, causing delays and disruptions in public transport.", status: "In progress", user_id: 20, latitude: -29.92225, longitude: 30.969531 },
   { id: 55, address: "39 Garth Road, Mayville, Durban, South Africa", size: "Small", description: "Small pothole.", status: "In progress", user_id: 20, latitude: -29.842755, longitude: 30.981782 }
 ])
+
+
+
