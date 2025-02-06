@@ -17,7 +17,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/satellite-v9",
       center: [this.startLngValue, this.startLatValue],
       zoom: 12
     })
@@ -98,7 +98,7 @@ export default class extends Controller {
         trackUserLocation: true
       })
     )
-    
+
   }
 
   #addMarkersToMap() {

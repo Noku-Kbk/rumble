@@ -1,32 +1,103 @@
+<div class="bg-orange-100 min-h-screen flex flex-col items-center p-6">
+  <!-- Pothole Card -->
+  <div class="w-full max-w-md bg-amber-50 rounded-xl shadow-lg overflow-hidden">
+    <% if @pothole.photo.attached? %>
+      <%= cl_image_tag @pothole.photo.key, class: "w-full h-60 object-cover rounded-t-xl" %>
+    <% else %>
+      <p class="text-center p-4">No Image Available</p>
+    <% end %>
 
-<%= cl_image_tag @pothole.photo.key, height: 200, width: 200, crop: :fill %>
-<%= @pothole.address %>
-<%= @pothole.size %>
-<%= @pothole.description %>
-<%= @pothole.status %>
-<%= link_to "Delete",
-  pothole_path(@pothole),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
-<%= link_to 'Edit', edit_pothole_path(@pothole), class: 'btn btn-warning' %>
-<%= link_to 'Back to List', potholes_path, class: 'btn btn-secondary' %>
+    <div class="p-6 rounded-t-xl bg-green-900 text-white">
 
-<h2>Comments</h2>
+    <!-- Status Badge -->
+      <div class="inline-block m-4 px-4 py-2 rounded-full text-sm font-medium
+        <%= @pothole.status == 'reported' ? 'bg-red-100 text-red-800' :
+            @pothole.status == 'in_progress' ? 'bg-yellow-100 text-orange-400' :
+            'bg-green-100 text-green-800' %>">
+        <%= @pothole.status.capitalize %>
+      </div>
+      <!-- Address -->
+      <h2 class="text-2xl font-semibold flex items-center">
+        <i class="fas fa-map-marker-alt text-orange-400 mr-2"></i>
+        <%= @pothole.address %>
+      </h2>
 
-<%= simple_form_for([@pothole, Comment.new]) do |f| %>
-  <div>
-    <%= f.input :content, label: "Add a comment", as: :text, input_html: { rows: 3 } %>
+      <!-- Size & Description -->
+      <p class="text-lg mt-3">
+        <i class="fas fa-ruler text-orange-400 mr-2"></i>
+        Size: <%= @pothole.size %>
+      </p>
+      <div class="p-4 mt-4 bg-green-800 rounded-lg">
+        <p><%= @pothole.description %></p>
+      </div>
+
+
+      <!-- Action Buttons (Only for Current User) -->
+      <% if current_user == @pothole.user %>
+        <div class="flex gap-3 mt-6">
+          <%= link_to edit_pothole_path(@pothole), class: "text-yellow-400 text-xl" do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to pothole_path(@pothole), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-400 text-xl" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mt-4">
+        <%= link_to "Back to List", potholes_path, class: "text-center inline-block px-4 py-2 bg-orange-400 text-white rounded-lg transition w-100" %>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="mt-8">
+        <h2 class="text-xl font-semibold">Comments</h2>
+
+        <!-- New Comment Form -->
+        <div class="bg-green-800 p-4 rounded-lg shadow-md">
+          <%= simple_form_for([@pothole, Comment.new]) do |f| %>
+            <div class="mb-4">
+              <%= f.input :content, label: "Add a comment", as: :text, input_html: { rows: 3, class: "w-full p-2 border rounded-lg bg-green-700 text-white" } %>
+            </div>
+            <div>
+              <%= f.button :submit, "Post Comment", class: "w-full bg-orange-400 text-green-900 px-4 py-2 rounded-lg transition" %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- Latest Comment -->
+        <% if @pothole.comments.any? %>
+          <div class="mt-4 p-4 bg-green-800 rounded-lg shadow-md">
+            <strong class="text-yellow-300"><%= @pothole.comments.last.user.name %>:</strong>
+            <p class="text-white"><%= @pothole.comments.last.content %></p>
+          </div>
+        <% end %>
+
+        <!-- Collapsible Older Comments -->
+        <% if @pothole.comments.count > 1 %>
+          <div class="mt-4">
+            <button class="w-full bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition"
+              type="button" data-bs-toggle="collapse" data-bs-target="#olderComments">
+              View More Comments
+            </button>
+
+            <div id="olderComments" class="collapse mt-3 space-y-3">
+              <% @pothole.comments[0...-1].each do |comment| %>
+                <div class="bg-green-800 p-4 rounded-lg shadow-md flex justify-between items-center">
+                  <div>
+                    <strong class="text-yellow-300"><%= comment.user.name %>:</strong>
+                    <p class="text-white"><%= comment.content %></p>
+                  </div>
+                  <% if current_user == comment.user %>
+                    <%= link_to pothole_comment_path(@pothole, comment), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-400 hover:text-red-600" do %>
+                      <i class="fas fa-trash"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.button :submit, "Post Comment" %>
-  </div>
-<% end %>
-
-<ul>
-  <% @pothole.comments.each do |comment| %>
-    <li>
-      <strong><%= comment.user.username %>:</strong> <%= comment.content %>
-      <%= link_to "Delete", pothole_comment_path(@pothole, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+</div>

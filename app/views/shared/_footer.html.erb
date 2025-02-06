@@ -1,24 +1,29 @@
-<footer class="fixed-bottom bg-white shadow-lg border-top py-2">
-  <div class="container d-flex justify-content-around text-center">
-    <%= link_to new_pothole_path, class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle-fill" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M8 16a8 8 0 100-16 8 8 0 000 16zM8 5a.5.5 0 00-.5.5V8H5.5a.5.5 0 000 1H7.5V11a.5.5 0 001 0V9H11a.5.5 0 000-1H8.5V5.5a.5.5 0 00-.5-.5z"/>
-      </svg>
-      <span class="small mt-1">Report</span>
+<footer class="fixed bottom-0 left-0 right-0 bg-green-800 text-stone-100 pb-6 pt-2 shadow-lg border-t border-stone-200/20 mt-16">
+  <div class="max-w-screen-lg mx-auto flex justify-around items-center">
+
+    <!-- Home -->
+    <%= link_to root_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+      <i class="fa-solid fa-house text-xl"></i>
+      <span class="text-xs mt-0.5">Home</span>
     <% end %>
 
-    <%= link_to potholes_path, class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-list" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M3 4.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0 3a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5z"/>
-      </svg>
-      <span class="small mt-1">Potholes</span>
+    <!-- Report -->
+    <%= link_to new_pothole_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+      <i class="fa-solid fa-triangle-exclamation text-xl"></i>
+      <span class="text-xs mt-0.5">Report</span>
     <% end %>
 
-    <%= link_to potholes_path, class: "d-flex flex-column align-items-center text-decoration-none text-dark" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-grid-fill" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M2 2h4v4H2V2zm0 5h4v4H2V7zm5-5h4v4H7V2zm5 0h4v4h-4V2zm-5 5h4v4H7V7zm5 0h4v4h-4V7zm-5 5h4v4H7v-4zm5 0h4v4h-4v-4z"/>
-      </svg>
-      <span class="small mt-1">Dashboard</span>
+    <!-- Potholes -->
+    <%= link_to potholes_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+      <i class="fa-solid fa-list text-xl"></i>
+      <span class="text-xs mt-0.5">Potholes</span>
     <% end %>
+
+    <!-- Chat -->
+    <%= link_to root_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+      <i class="fa-solid fa-message text-xl"></i>
+      <span class="text-xs mt-0.5">Chat</span>
+    <% end %>
+
   </div>
 </footer>
