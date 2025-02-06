@@ -1,13 +1,37 @@
-<h1 class="mb-4">Report a New Pothole</h1>
-
-<div class="card">
+<div class="max-w-3xl mx-auto p-8 rounded-lg shadow-lg" style="background-color: #FFFFF0;">
   <div class="card-body">
+  <h3 class="font-semibold mb-6" style="color: #006400;">Report a New Pothole</h3>
 
-<%= simple_form_for(@pothole) do |f| %>
-  <%= f.input :address %>
-  <%= f.input :size %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :status, collection: ['Reported', 'In progress', 'Done'] %>
-  <%= f.submit %>
-<% end %>
+    <%= simple_form_for(@pothole) do |f| %>
+      <div class="space-y-6">
+
+        <div class="flex flex-col">
+          <%= f.input :address, label: 'Pothole Location', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.input :size, label: 'Size of Pothole', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.input :description, label: 'Description', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.input :photo, as: :file, label: 'Upload a Photo', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+        </div>
+
+        <div class="flex flex-col">
+          <%= f.input :status, label: 'Pothole Status', collection: ['Reported', 'In progress', 'Done'], input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+        </div>
+
+        <div class="flex justify-end">
+          <%= f.submit 'Submit Report', class: 'w-full py-2 px-6 rounded-md', style: "background-color:rgb(228, 80, 61); color: #FFFFF0;", data: { controller: 'submit-hover', action: 'mouseover->submit-hover.changeBackgroundColor mouseout->submit-hover.resetBackgroundColor' } %>
+        </div>
+
+
+      </div>
+    <% end %>
+
+  </div>
+</div>

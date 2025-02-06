@@ -1,35 +1,58 @@
+<div class="bg-orange-100 p-8">
+  <!-- New Pothole Button -->
+  <a href="/potholes/new" class="inline-block mb-8 px-6 py-3 bg-green-700 hover:bg-green-800 text-white rounded-lg shadow-md transition-colors">
+    <i class="fas fa-plus-circle mr-2"></i>Report a New Pothole
+  </a>
 
-
-<%= link_to 'Report a New Pothole', new_pothole_path, class: 'btn btn-primary mb-4' %>
-
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th>Address</th>
-      <th>Size</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Reported By</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
+  <!-- Pothole Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     <% @potholes.each do |pothole| %>
-      <tr>
-        <td><%= pothole.address %></td>
-        <td><%= pothole.size %></td>
-        <td><%= pothole.description %></td>
-        <td><%= pothole.status.capitalize %></td>
-        <td><%= pothole.user.email %></td>
-        <td>
-          <%= link_to 'View', pothole_path(pothole), class: 'btn btn-secondary btn-sm' %>
-          <%= link_to 'Edit', edit_pothole_path(pothole), class: 'btn btn-warning btn-sm' %>
-          <%= link_to 'Delete', pothole_path(pothole),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' },
-                      class: 'btn btn-danger btn-sm' %>
-        </td>
-      </tr>
+      <a href="/potholes/<%= pothole.id %>" class="block bg-amber-50 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+        <!-- Image Section -->
+        <div class="relative h-48 overflow-hidden">
+          <% if pothole.photo.attached? %>
+            <%= cl_image_tag pothole.photo.key,
+                    class: "w-full h-full object-cover",
+                    crop: :fill %>
+          <% else %>
+            <p class="text-center p-4">No image</p>
+          <% end %>
+
+          <!-- Status Badge -->
+          <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium>
+            <%= pothole.status == 'reported' ? 'bg-red-100 text-red-800' :
+                pothole.status == 'in_progress' ? 'bg-yellow-100 text-yellow-800' :
+                'bg-green-100 text-green-800' %>">
+            <%= pothole.status.capitalize %>
+          </div>
+        </div>
+
+        <!-- Card Content -->
+        <div class="mt-5 p-6 bg-gradient-to-b from-amber-50 to-orange-50">
+          <div class="mb-4">
+            <h3 class="text-lg font-semibold text-green-900 mb-2">
+              <i class="fas fa-map-marker-alt text-green-700 mr-2"></i>
+              <%= pothole.address %>
+            </h3>
+            <p class="text-stone-700">
+              <i class="fas fa-ruler text-stone-600 mr-2"></i>
+              Size: <%= pothole.size %>
+            </p>
+          </div>
+
+          <div class="mb-4 p-4 bg-white bg-opacity-50 rounded-lg">
+            <p class="text-stone-700">
+              <i class="fas fa-comment text-stone-600 mr-2"></i>
+              <%= pothole.description %>
+            </p>
+          </div>
+
+          <div class="text-sm text-stone-600 mb-4">
+            <i class="fas fa-user mr-2"></i>
+            Reported by: <%= pothole.user.name %>
+          </div>
+        </div>
+      </a>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>

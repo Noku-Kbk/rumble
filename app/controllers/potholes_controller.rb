@@ -22,7 +22,7 @@ class PotholesController < ApplicationController
     @pothole = Pothole.new(pothole_params)
     @pothole.user = current_user
     if @pothole.save
-      redirect_to @pothole, notice: 'Pothole was successfully reported.'
+      redirect_to root_path, notice: 'Pothole was successfully reported.'
     else
       render :new, status: :unprocessable_entity
     end
