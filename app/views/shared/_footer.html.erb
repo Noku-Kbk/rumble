@@ -1,28 +1,22 @@
-<footer class="fixed bottom-0 left-0 right-0 bg-green-800 text-stone-100 pb-6 pt-2 shadow-lg border-t border-stone-200/20 mt-16">
+<footer class="fixed bottom-0 left-0 right-0 bg-green-800 text-green-100 pb-2 pt-1 shadow-lg border-t border-green-600/40 mt-16">
   <div class="max-w-screen-lg mx-auto flex justify-around items-center">
 
     <!-- Home -->
-    <%= link_to root_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+    <%= link_to root_path, class: "flex flex-col items-center text-orange-100 hover:text-stone-400 transition-colors" do %>
       <i class="fa-solid fa-house text-xl"></i>
       <span class="text-xs mt-0.5">Home</span>
     <% end %>
 
     <!-- Report -->
-    <%= link_to new_pothole_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+    <%= link_to new_pothole_path, class: "flex flex-col items-center text-orange-100 hover:text-stone-400 transition-colors" do %>
       <i class="fa-solid fa-triangle-exclamation text-xl"></i>
       <span class="text-xs mt-0.5">Report</span>
     <% end %>
 
     <!-- Potholes -->
-    <%= link_to potholes_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
+    <%= link_to potholes_path, class: "flex flex-col items-center text-orange-100 hover:text-stone-400 transition-colors" do %>
       <i class="fa-solid fa-list text-xl"></i>
       <span class="text-xs mt-0.5">Potholes</span>
-    <% end %>
-
-    <!-- Chat -->
-    <%= link_to root_path, class: "flex flex-col items-center text-stone-200 hover:text-green-200 transition-colors" do %>
-      <i class="fa-solid fa-message text-xl"></i>
-      <span class="text-xs mt-0.5">Chat</span>
     <% end %>
 
   </div>
