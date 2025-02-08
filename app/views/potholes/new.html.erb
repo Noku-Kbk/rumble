@@ -1,34 +1,44 @@
-<div class="max-w-3xl mx-auto p-8 rounded-lg shadow-lg" style="background-color: #FFFFF0;">
+<div class="max-w-2xl mx-auto p-10 rounded-xl shadow-xl mb-24 bg-orange-100">
   <div class="card-body">
-  <h3 class="font-semibold mb-6" style="color: #006400;">Report a New Pothole</h3>
+    <h3 class="text-3xl font-bold mb-8 text-center text-green-800">Report a New Pothole</h3>
 
     <%= simple_form_for(@pothole) do |f| %>
       <div class="space-y-6">
 
+        <!-- Address -->
         <div class="flex flex-col">
-          <%= f.input :address, label: 'Pothole Location', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+          <%= f.label :address, 'Pothole Location', class: 'font-semibold text-green-800 mb-1' %>
+          <%= f.input_field :address, class: 'p-3 border border-green-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800 shadow-sm' %>
         </div>
 
+        <!-- Size -->
         <div class="flex flex-col">
-          <%= f.input :size, label: 'Size of Pothole', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+          <%= f.label :size, 'Size of Pothole', class: 'font-semibold text-green-800 mb-1' %>
+          <%= f.input_field :size, class: 'p-3 border border-green-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800 shadow-sm' %>
         </div>
 
+        <!-- Description -->
         <div class="flex flex-col">
-          <%= f.input :description, label: 'Description', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+          <%= f.label :description, 'Description', class: 'font-semibold text-green-800 mb-1' %>
+          <%= f.input_field :description, class: 'p-3 border border-green-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800 shadow-sm' %>
         </div>
 
+        <!-- Photo Upload -->
         <div class="flex flex-col">
-          <%= f.input :photo, as: :file, label: 'Upload a Photo', input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+          <%= f.label :photo, 'Upload a Photo', class: 'font-semibold text-green-800 mb-1' %>
+          <%= f.input :photo, as: :file, input_html: { class: 'p-3 border border-green-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800 shadow-sm' } %>
         </div>
 
+        <!-- Status -->
         <div class="flex flex-col">
-          <%= f.input :status, label: 'Pothole Status', collection: ['Reported', 'In progress', 'Done'], input_html: { class: 'p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#006400]' } %>
+          <%= f.label :status, 'Pothole Status', class: 'font-semibold text-green-800 mb-1' %>
+          <%= f.input :status, collection: ['Reported', 'In progress', 'Done'], input_html: { class: 'p-3 border border-green-400 rounded-md focus:outline-none focus:ring-2 focus:ring-green-800 shadow-sm' } %>
         </div>
 
-        <div class="flex justify-end">
-          <%= f.submit 'Submit Report', class: 'w-full py-2 px-6 rounded-md', style: "background-color:rgb(228, 80, 61); color: #FFFFF0;", data: { controller: 'submit-hover', action: 'mouseover->submit-hover.changeBackgroundColor mouseout->submit-hover.resetBackgroundColor' } %>
+        <!-- Submit Button -->
+        <div class="flex justify-center mt-10">
+          <%= f.submit 'Submit Report', class: 'w-2/3 py-3 px-6 text-lg font-semibold text-center rounded-lg shadow-md transition-all transform hover:scale-105 hover:shadow-lg bg-orange-400 text-green-800' %>
         </div>
-
 
       </div>
     <% end %>

@@ -1,14 +1,17 @@
 <% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <%= notice %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  <div class="bg-[#F5E6C5] text-[#3F422E] border border-[#9F886F] rounded-md shadow-md p-3 m-2 flex items-center justify-between" role="alert">
+    <span><%= notice %></span>
+    <button type="button" class="text-[#3F422E] hover:text-[#D78B30] transition-colors" data-bs-dismiss="alert" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
 <% end %>
+
 <% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  <div class="bg-[#D78B30] text-[#F5E6C5] border border-[#9F886F] rounded-md shadow-md p-3 m-2 flex items-center justify-between" role="alert">
+    <span><%= alert %></span>
+    <button type="button" class="text-[#F5E6C5] hover:text-[#F5E6C5]/80 transition-colors" data-bs-dismiss="alert" aria-label="Close">
+      <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
 <% end %>
